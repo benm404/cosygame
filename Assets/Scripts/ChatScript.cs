@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChatScript : MonoBehaviour
 {
 
-    Transform textBox;
+    /*Transform textBox;
     Item Item;
     collect collect;
     public GameObject item;
@@ -54,5 +54,5 @@ public class ChatScript : MonoBehaviour
         print("Chat");
         textBox.gameObject.SetActive(false);
         
-    }
+    }*/
 }

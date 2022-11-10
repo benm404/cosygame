@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    Transform Player;
+    /*Transform Player;
     ChatScript ChatScript;
 
     public GameObject chatscript;
@@ -54,5 +54,5 @@ public class Item : MonoBehaviour
                 Collected = true;
             }
         }
-    }
+    }*/
 }
