@@ -8,15 +8,7 @@ public class MovementScript : MonoBehaviour
 
     public bool MovementActive = true;
 
-    
-
     public float speed;
-
-    void Start()
-    {
-        
-    }
-
     
     void Update()
     {
@@ -29,7 +21,7 @@ public class MovementScript : MonoBehaviour
             }
 
             if (Input.GetKey(KeyCode.S))
-            {
+            { 
                 transform.localPosition += Vector3.up * -speed * Time.deltaTime;
             }
 
