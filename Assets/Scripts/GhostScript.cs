@@ -32,10 +32,12 @@ public class GhostScript : MonoBehaviour
 
     private GameManager GameManager;
     private MovementScript MovementScript;
+    private GameObject GameObject;
     void Start()
     {
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         MovementScript = GameObject.Find("PlayerContainer").GetComponent<MovementScript>();
+        GameObject = GetComponent<GameObject>();
         Timer = TimeDefault;
     }
 
@@ -43,10 +45,6 @@ public class GhostScript : MonoBehaviour
     void Update()
     {
         float step = speed * Time.deltaTime;
-        if (GameManager.LitterCollected)
-        {
-            gameObject.SetActive(true);
-        }
 
         if (Timer <= 0)
         {
@@ -115,7 +113,7 @@ public class GhostScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player") && !GameManager.RaceWon)
+        if (collision.CompareTag("Player") && !GameManager.RaceWon  && GameManager.LitterCollected)
         {
             MovementScript.MovementActive = false;
             collision.transform.position = PlayerPosition;
