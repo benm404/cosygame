@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 
     public int Time;
     [SerializeField]private int LitterTimer;
-    private bool StartTimer = false;
-    private bool LitterCollected = false;
+    public bool LitterCollected = false;
+    public bool RaceWon = false;
 
     private void Start()
     {
@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour
         if(LitterContainer.transform.childCount <= 0)
         {
             LitterCollected = true;
+        }
+        if (LitterCollected)
+        {
             if (LitterTimer >= 0)
             {
                 DisplayText(Litter);
             }
-            if(LitterTimer <= 0)
+            if (LitterTimer <= 0)
             {
                 HideText(Litter);
             }

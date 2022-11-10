@@ -9,7 +9,16 @@ public class MovementScript : MonoBehaviour
     public bool MovementActive = true;
 
     public float speed;
-    
+
+    private float WalkSpeed;
+    private float RunSpeed;
+
+    private void Start()
+    {
+        WalkSpeed = speed;
+        RunSpeed = speed * 1.5f;
+    }
+
     void Update()
     {
 
@@ -35,6 +44,12 @@ public class MovementScript : MonoBehaviour
                 transform.localPosition += Vector3.right * speed * Time.deltaTime;
             }
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = RunSpeed;
+        }
+        else speed = WalkSpeed;
 
         
     }
