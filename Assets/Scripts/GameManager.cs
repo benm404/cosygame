@@ -10,16 +10,19 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI Litter;
     public TextMeshProUGUI Race;
+    public TextMeshProUGUI RockKey;
     private GameObject LitterContainer;
 
     public int Time;
     [SerializeField]private int Timer;
     public bool LitterCollected = false;
     public bool RaceWon = false;
+    public bool RockKeyCollected = false;
 
     private bool StartTimer = false;
     private bool LitterText = true;
     private bool RaceText = true;
+    private bool RockText = true;
 
     private void Start()
     {
@@ -60,6 +63,17 @@ public class GameManager : MonoBehaviour
         if(RaceWon && !RaceText && Timer <= 0)
         {
             HideText(Race);
+        }
+
+        if(RockKeyCollected && RockText && Timer >= 0)
+        {
+            RockText = false;
+            DisplayText(RockKey);
+        }
+
+        if(RockKeyCollected && !RockText && Timer <= 0)
+        {
+            HideText(RockKey);
         }
     }
 

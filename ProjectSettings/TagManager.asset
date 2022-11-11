@@ -7,6 +7,7 @@ TagManager:
   - Litter
   - Bin
   - Ghost
+  - RockKey
   layers:
   - Default
   - TransparentFX
