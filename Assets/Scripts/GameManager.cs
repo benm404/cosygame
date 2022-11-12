@@ -6,6 +6,8 @@ using System.Threading;
 
 public class GameManager : MonoBehaviour
 {
+    MovementScript MovementScript;
+
     public GameObject TextBox;
     
     public GameObject Litter;
@@ -28,8 +30,14 @@ public class GameManager : MonoBehaviour
     private bool RockText = true;
     private bool KeyText = true;
 
+    private bool Options = false;
+    private int OTimer;
+    private int OTime = 10;
+    public GameObject PauseMenu;
+
     private void Start()
     {
+        MovementScript = GameObject.Find("PlayerContainer").GetComponent<MovementScript>();
         LitterContainer = GameObject.Find("Litter");
         Timer = Time;
     }
@@ -93,6 +101,15 @@ public class GameManager : MonoBehaviour
         {
            // HideText(FinalKey);
         }
+
+        if(Input.GetKey(KeyCode.Escape) && OTimer <= 0)
+        {
+            OTimer = OTime;
+            if (!Options)
+            {
+                OptionsMenu();
+            } else { HideOptions(); }
+        }
     }
 
     private void FixedUpdate()
@@ -101,7 +118,10 @@ public class GameManager : MonoBehaviour
         {
             Timer -= 1;
         }
-        
+        if(OTimer >= 0)
+        {
+            OTimer -= 1;
+        }
     }
 
     private void DisplayText(GameObject text)
@@ -118,5 +138,19 @@ public class GameManager : MonoBehaviour
         Timer = Time;
         
         TextBox.SetActive(false);
+    }
+
+    private void OptionsMenu() 
+    {
+        Options = true;
+        MovementScript.MovementActive = false;
+        PauseMenu.SetActive(true);
+    }
+
+    private void HideOptions()
+    {
+        Options = false;
+        MovementScript.MovementActive = true;
+        PauseMenu.SetActive(false);
     }
 }
