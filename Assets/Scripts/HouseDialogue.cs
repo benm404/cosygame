@@ -16,6 +16,8 @@ public class HouseDialogue : MonoBehaviour
     public GameObject Text4;
     public GameObject Text5;
 
+    public GameObject Tooltip;
+
     public bool NoteActive = false;
     public int Timer;
     private int Time = 10;
@@ -38,9 +40,20 @@ public class HouseDialogue : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("MainHouse"))
+        {
+            Tooltip.SetActive(false);
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.CompareTag("MainHouse"))
+        {
+            Tooltip.SetActive(true);
+        }
+        
         if(Input.GetKey(KeyCode.E) && collision.CompareTag("MainHouse") && Timer <= 0)
         {
             Timer = Time;
