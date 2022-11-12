@@ -8,6 +8,7 @@ TagManager:
   - Bin
   - Ghost
   - RockKey
+  - TreeHouse
   layers:
   - Default
   - TransparentFX
