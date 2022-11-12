@@ -43,6 +43,7 @@ public class TreeHouseScript : MonoBehaviour
                 DisplayImage();
                 StartTimer = true;
                 MovementScript.MovementActive = false;
+                GameManager.PhotoViewed = true;
             }
             
         }

@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject TextBox;
     
-    public TextMeshProUGUI Litter;
-    public TextMeshProUGUI Race;
-    public TextMeshProUGUI RockKey;
+    public GameObject Litter;
+    public GameObject Race;
+    public GameObject RockKey;
+    public GameObject FinalKey;
     private GameObject LitterContainer;
 
     public int Time;
@@ -18,11 +19,14 @@ public class GameManager : MonoBehaviour
     public bool LitterCollected = false;
     public bool RaceWon = false;
     public bool RockKeyCollected = false;
+    public bool PhotoViewed = false;
+    public bool FinalKeyCollected = false;
 
     private bool StartTimer = false;
     private bool LitterText = true;
     private bool RaceText = true;
     private bool RockText = true;
+    private bool KeyText = true;
 
     private void Start()
     {
@@ -51,6 +55,9 @@ public class GameManager : MonoBehaviour
             if (Timer <= 0)
             {
                 HideText(Litter);
+                HideText(Race);
+                HideText(RockKey);
+                HideText(FinalKey);
             }
         }
 
@@ -62,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
         if(RaceWon && !RaceText && Timer <= 0)
         {
-            HideText(Race);
+           // HideText(Race);
         }
 
         if(RockKeyCollected && RockText && Timer >= 0)
@@ -73,7 +80,18 @@ public class GameManager : MonoBehaviour
 
         if(RockKeyCollected && !RockText && Timer <= 0)
         {
-            HideText(RockKey);
+            //HideText(RockKey);
+        }
+
+        if(FinalKeyCollected && KeyText && Timer >= 0)
+        {
+            KeyText = false;
+            DisplayText(FinalKey);
+        }
+
+        if(FinalKeyCollected && !KeyText && Timer <= 0)
+        {
+           // HideText(FinalKey);
         }
     }
 
@@ -86,18 +104,19 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void DisplayText(TextMeshProUGUI text)
+    private void DisplayText(GameObject text)
     {
         StartTimer = true;
-        text.gameObject.SetActive(true);
+        text.SetActive(true);
         TextBox.SetActive(true);
     }
 
-    private void HideText(TextMeshProUGUI text)
+    private void HideText(GameObject text)
     {
+        text.SetActive(false);
         StartTimer = false;
         Timer = Time;
-        text.gameObject.SetActive(false);
+        
         TextBox.SetActive(false);
     }
 }

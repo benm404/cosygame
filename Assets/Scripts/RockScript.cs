@@ -20,7 +20,7 @@ public class RockScript : MonoBehaviour
     {
             if (Input.GetKey(KeyCode.E))
             {
-                if (collision.CompareTag("RockKey"))
+                if (collision.CompareTag("RockKey") && GameManager.RaceWon)
                 {
                 GameManager.RockKeyCollected = true;
                 }
