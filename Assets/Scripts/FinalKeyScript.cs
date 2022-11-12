@@ -20,7 +20,7 @@ public class FinalKeyScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            if (collision.CompareTag("RockKey") && GameManager.PhotoViewed)
+            if (collision.CompareTag("FinalKey") && GameManager.PhotoViewed)
             {
                 GameManager.FinalKeyCollected = true;
             }

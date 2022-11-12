@@ -9,6 +9,8 @@ TagManager:
   - Ghost
   - RockKey
   - TreeHouse
+  - MainHouse
+  - FinalKey
   layers:
   - Default
   - TransparentFX
